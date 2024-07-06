@@ -18,11 +18,11 @@ with open('artifacts/explainer.pkl', 'rb') as f:
 with st.sidebar.form(key='house_price'):
     
     form_input = {
-        'BEDROOMS': st.number_input('BEEDROOMS', value=3),
-        'BATHROOMS': st.number_input('BATHROOMS', value=2),
-        'GARAGE': st.number_input('GARAGE', 2),
-        'FLOOR_AREA': st.number_input('FLOOR_AREA', 200),
-        'BUILD_YEAR': st.number_input('BUILD_YEAR', 2000),
+        'Bedrooms': st.number_input('Bedrooms', value=3),
+        'Bathrooms': st.number_input('Bathrooms', value=2),
+        'Garage': st.number_input('Garage', 2),
+        'Build Year': st.number_input('Build Year', 2000),
+        'Floor Area': st.number_input('Floor Area', 200),
     }
     
     name = st.text_input('Address', placeholder='Wall Street')
