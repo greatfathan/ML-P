@@ -13,17 +13,17 @@ with open('artifacts/pipeline.pkl', 'rb') as f:
     model = pickle.load(f)
 
 
-data_input = {}
+form_input = {}
 
 with st.sidebar.form(key='form'):
     
     name = st.text_input('Name')
 
     for key, value in options_categorical.items():
-        data_input[key] = st.selectbox(key, value)
+        form_input[key] = st.selectbox(key, value)
 
     for key, value in options_numerical.items():
-        data_input[key] = st.number_input(key, value=value)
+        form_input[key] = st.number_input(key, value=value)
 
     button = st.form_submit_button('Submit')
         
@@ -31,7 +31,7 @@ with st.sidebar.form(key='form'):
 if button:
     
     st.write('Based on the information you provided:')
-    df_input = pd.DataFrame(data_input, index=[name])
+    df_input = pd.DataFrame(form_input, index=[name])
     
     df_input
 

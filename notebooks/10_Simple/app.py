@@ -2,12 +2,12 @@ import pandas as pd
 import pickle
 import streamlit as st
 
-with open('../artifacts/model.pkl', 'rb') as f:
+with open('artifacts/model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 with st.sidebar.form(key='house_price'):
     
-    your_house = {
+    form_input = {
         'BEDROOMS': st.number_input('BEEDROOMS', value=3),
         'BATHROOMS': st.number_input('BATHROOMS', value=2),
         'GARAGE': st.number_input('GARAGE', 2),
@@ -20,9 +20,9 @@ with st.sidebar.form(key='house_price'):
 
 if submit:
     
-    df_house = pd.DataFrame(your_house, index=[name])
+    df_input = pd.DataFrame(form_input, index=[name])
     st.write('For a house with the following features:')
-    st.write(df_house)
+    st.write(df_input)
     
-    y_pred = model.predict(df_house)[0]
+    y_pred = model.predict(df_input)[0]
     st.write(f'The estimated price is ${y_pred:,.2f}')

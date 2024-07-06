@@ -37,5 +37,8 @@ if submit:
         
     shap_values = explainer.shap_values(df_input)
     st.write('Based on the model, the influence of each feature is:')
-    fp = shap.force_plot(explainer.expected_value, shap_values, df_input)
-    st_shap(fp, height=300)
+    import matplotlib.pyplot as plt
+    plt.figure()
+    shap.plots.waterfall(explainer(df_input)[0])
+    plt.show()
+    # st_shap(fp, height=300)
